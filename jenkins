@@ -4,4 +4,10 @@ tools {
 maven "mvn"
 }
 triggers {
-pollscm 
+pollscm('* * * * *') //schedule scm polling at a specified interval
+}
+
+stages {
+stage ('checkout') {
+steps {
+git branch: 'main', url: 'https://github.com/iamkishore0/maven_project.git'
