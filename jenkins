@@ -11,3 +11,30 @@ stages {
 stage ('checkout') {
 steps {
 git branch: 'main', url: 'https://github.com/iamkishore0/maven_project.git'
+//For example of ,you can use 'git' for Git repositories
+//configure your SCM credentials
+//'checkout' [($class:'GitSCM',branches:'(name'*/master'),configs:(url:'https://github.com/your repo.git')]
+}
+}
+stage('Build')
+steps {
+sh "mvn compile"
+}
+}
+stage('Test')
+steps {
+sh "mvn test"
+}
+}
+stage('Deploy')
+steps {
+sh "mvn install"
+}
+}
+}
+}
+
+
+
+
+
